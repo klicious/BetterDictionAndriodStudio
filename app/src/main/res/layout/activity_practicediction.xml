@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ezlife.betterdiction.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/favCharLayout">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Favorite Character :"
+            android:id="@+id/favCharTextView"
+            android:layout_gravity="center_vertical"
+            android:gravity="right"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/favCharSpinner"
+            android:layout_gravity="center_vertical"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/sampleTextLayout">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="READ"
+            android:id="@+id/readSampleTextBtn"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onReadSampleTextBtnClicked" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="Sample Text :"
+            android:id="@+id/sampleTextView"
+            android:layout_gravity="center_vertical"
+            android:gravity="left"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="show content"
+            android:id="@+id/sampleContentTextView"
+            android:layout_gravity="center_vertical"
+            android:gravity="left"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/translationLayout">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="READ"
+            android:id="@+id/readTranslationTextBtn"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onReadTranslationTextBtnClicked" />
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:text="Translation :"
+        android:id="@+id/translationTextView"
+        android:layout_gravity="center_vertical"
+        android:gravity="left"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="show content"
+        android:id="@+id/translationContentTextView"
+        android:layout_gravity="center_vertical"
+        android:gravity="left"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:id="@+id/userInputLayout">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="READ"
+            android:id="@+id/readUserInputTextBtn"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onReadUserInputTextBtnClicked" />
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="User Input :"
+            android:id="@+id/userInputTextView"
+            android:layout_gravity="center_vertical"
+            android:gravity="left"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="show content"
+            android:id="@+id/userInputContentEditText"
+            android:layout_gravity="center_vertical"
+            android:gravity="left"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal"
+        android:id="@+id/completeBtnLayout">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="COMPLETE"
+            android:id="@+id/completeBtn"
+            android:layout_gravity="center_horizontal"
+            android:onClick="onCompleteBtnClicked" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="show Result here!"
+            android:id="@+id/resultTextView"
+            android:layout_gravity="center_vertical"
+            android:gravity="left"/>
+
+    </LinearLayout>
+
+</LinearLayout>

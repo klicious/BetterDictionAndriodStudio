@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">BetterDiction</string>
+    <string-array name="Category_array">
+        <item>Drama</item>
+        <item>Movie</item>
+        <item>News</item>
+        <item>Speech</item>
+    </string-array>
+    <string-array name="Drama_array">
+        <item>Friends</item>
+        <item>Lucifer</item>
+        <item>Grey\'s Anatomy</item>
+        <item>Entourage</item>
+        <item>Heroes</item>
+        <item>Park\'s Recreation</item>
+    </string-array>
+    <string-array name="Friends_casts">
+        <item>Rachel</item>
+        <item>Ross</item>
+        <item>Monica</item>
+        <item>Joey</item>
+        <item>Phoebe</item>
+        <item>Chandler</item>
+        <item>Everyone</item>
+    </string-array>
+</resources>
