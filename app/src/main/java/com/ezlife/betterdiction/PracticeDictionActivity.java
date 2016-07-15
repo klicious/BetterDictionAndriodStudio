@@ -77,6 +77,12 @@ public class PracticeDictionActivity extends AppCompatActivity {
         userInput = (EditText) findViewById(R.id.userInputContentEditText);
         resultText = (TextView) findViewById(R.id.resultTextView);
 
+        try {
+            fullScript = OpenFile("Drama/Friends/Season1/Friendstranscript101.txt");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         script = new ArrayList<String>();
         ArrayList<String> fullScript = new ArrayList<String>();
         ArrayList<String> Rachel = new ArrayList<String>();
@@ -95,27 +101,18 @@ public class PracticeDictionActivity extends AppCompatActivity {
         eachScript.add(Chandler);
         eachScript.add(fullScript);
 
-        try {
-            fullScript = OpenFile("Drama/Friends/Season1/Friendstranscript101.txt");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         for(String ret : fullScript) {
             boolean isCast = false;
 
             String[] parts = ret.split(":");
 
             for(String name : cast) {
-                //Log.d("HELLO", parts[0]);
-                //Log.d("HELLO", parts[1]);
                 if (name.equals(parts[0])){
                     isCast = true;
 
                     eachScript.get(
                             friends.valueOf(name).ordinal())
                             .add(parts[1].replaceAll("\\(.*\\)", "").replaceAll("\\[.*\\]", "").trim());
-
                     break;
                 }
 
@@ -149,6 +146,41 @@ public class PracticeDictionActivity extends AppCompatActivity {
 
     }
 
+    private void doSpeak(Strint text) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES_LOLIPOP) {
+            ttsGreater21(text);
+        } else {
+            ttsUnder20(text);
+        }
+    }
+
+    @SuppressWarnings("deprecation")
+    private void ttsUnder20(String text) {
+        HashMap<String, String> map = new HashMap<>();
+        map.put(TextToSpeech.Engine.KEY_PARAM_UTTERANCE_ID, "MessageId");
+        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                tts.setLanguage(Locale.ENGLISH);
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, map);
+            }
+        });
+        tts.shutdown();
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLIPOP)
+    private void ttsGreater21(String text) {
+        String utteranceId=this.hashCode() + "";
+        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                tts.setLanguage(Locale.ENGLISH);
+                tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, utteranceId);
+            }
+        });
+        tts.shutdown();
+    }
+
     private ArrayList<String> OpenFile(String path) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open(path), "UTF-8"));
 
@@ -164,39 +196,18 @@ public class PracticeDictionActivity extends AppCompatActivity {
     }
 
     public void onReadSampleTextBtnClicked(View v) {
-        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                String str = sampleText.getText().toString();
-
-                tts.setLanguage(Locale.ENGLISH);
-                tts.speak(str, TextToSpeech.QUEUE_FLUSH, null, null);
-            }
-        });
+        String str = sampleText.getText().toString();
+        doSpeak(str);
     }
 
     public void onReadTranslationTextBtnClicked(View v) {
-        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                String str = translation.getText().toString();
-
-                tts.setLanguage(Locale.UK);
-                tts.speak(str, TextToSpeech.QUEUE_FLUSH, null, null);
-            }
-        });
+        String str = translation.getText().toString();
+        doSpeak(str);
     }
 
     public void onReadUserInputTextBtnClicked(View v) {
-        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                String str = userInput.getText().toString();
-
-                tts.setLanguage(Locale.CANADA);
-                tts.speak(str, TextToSpeech.QUEUE_FLUSH, null, null);
-            }
-        });
+        String str = userInput.getText().toString();
+        doSpeak(str);
     }
 
     public void onCompleteBtnClicked(View v) {
